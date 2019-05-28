@@ -2,27 +2,27 @@ package tree;
 
 public interface Tree {
 
-	// ²éÕÒ½Úµã
+	// æŸ¥æ‰¾èŠ‚ç‚¹
 	public Node find(int key);
 
-	// ²åÈëĞÂ½Úµã
+	// æ’å…¥æ–°èŠ‚ç‚¹
 	public boolean insert(int data);
 
-	// ÖĞĞò±éÀú
+	// ä¸­åºéå†
 	public void infixOrder(Node current);
 
-	// Ç°Ğò±éÀú
+	// å‰åºéå†
 	public void preOrder(Node current);
 
-	// ºóĞò±éÀú
+	// ååºéå†
 	public void postOrder(Node current);
 
-	// ²éÕÒ×î´óÖµ
+	// æŸ¥æ‰¾æœ€å¤§å€¼
 	public Node findMax();
 
-	// ²éÕÒ×îĞ¡Öµ
+	// æŸ¥æ‰¾æœ€å°å€¼
 	public Node findMin();
 
-	// É¾³ı½Úµã
+	// åˆ é™¤èŠ‚ç‚¹
 	public boolean delete(int key);
 }

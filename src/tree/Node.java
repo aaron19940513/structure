@@ -1,16 +1,16 @@
 package tree;
 
 public class Node {
-	int data; // ½ÚµãÊı¾İ
-	Node leftChild; // ×ó×Ó½ÚµãµÄÒıÓÃ
-	Node rightChild; // ÓÒ×Ó½ÚµãµÄÒıÓÃ
-	boolean isDelete;// ±íÊ¾½ÚµãÊÇ·ñ±»É¾³ı
+	int data; // èŠ‚ç‚¹æ•°æ®
+	Node leftChild; // å·¦å­èŠ‚ç‚¹çš„å¼•ç”¨
+	Node rightChild; // å³å­èŠ‚ç‚¹çš„å¼•ç”¨
+	boolean isDelete;// è¡¨ç¤ºèŠ‚ç‚¹æ˜¯å¦è¢«åˆ é™¤
 
 	public Node(int data) {
 		this.data = data;
 	}
 
-	// ´òÓ¡½ÚµãÄÚÈİ
+	// æ‰“å°èŠ‚ç‚¹å†…å®¹
 	public void display() {
 		System.out.println(data);
 	}
