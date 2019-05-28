@@ -94,7 +94,7 @@ public class BinaryTree implements Tree {
 		Node current = root;
 		Node parent = root;
 		boolean isLeftChild = false;
-		// ²éÕÒÉ¾³ıÖµ£¬ÕÒ²»µ½Ö±½Ó·µ»Øfalse
+		// æŸ¥æ‰¾åˆ é™¤å€¼ï¼Œæ‰¾ä¸åˆ°ç›´æ¥è¿”å›false
 		while (current.data != key) {
 			parent = current;
 			if (current.data > key) {
@@ -108,7 +108,7 @@ public class BinaryTree implements Tree {
 				return false;
 			}
 		}
-		// Èç¹ûµ±Ç°½ÚµãÃ»ÓĞ×Ó½Úµã
+		// å¦‚æœå½“å‰èŠ‚ç‚¹æ²¡æœ‰å­èŠ‚ç‚¹
 		if (current.leftChild == null && current.rightChild == null) {
 			if (current == root) {
 				root = null;
@@ -119,7 +119,7 @@ public class BinaryTree implements Tree {
 			}
 			return true;
 		}
-		// µ±Ç°½ÚµãÓĞÒ»¸ö×Ó½Úµã
+		// å½“å‰èŠ‚ç‚¹æœ‰ä¸€ä¸ªå­èŠ‚ç‚¹
 		if ((current.leftChild == null && current.rightChild != null)
 				|| (current.rightChild == null && current.leftChild != null)) {
 			Node childNode = current.leftChild==null?current.rightChild:current.leftChild;
@@ -132,7 +132,7 @@ public class BinaryTree implements Tree {
 			}
 			return true;
 		}
-		// µ±Ç°½Úµã´æÔÚÁ½¸ö×Ó½Úµã
+		// å½“å‰èŠ‚ç‚¹å­˜åœ¨ä¸¤ä¸ªå­èŠ‚ç‚¹
 		if (current.leftChild != null && current.rightChild != null) {
 			Node successor =  getSuccessor(current);
 			if (current == root) {
@@ -148,24 +148,24 @@ public class BinaryTree implements Tree {
 		return false;
 	}
 
-	//ÕÒµ½ºó¼Ì½Úµã£¬½«ºó¼Ì½ÚµãµÄÓÒ×ÓÊ÷Á¬½Óµ½ºó¼Ì½ÚµãµÄ¸¸½ÚµãµÄ×ó×ÓÊ÷
-	//±»É¾³ı½ÚµãµÄÓÒ×ÓÊ÷³ÉÎªºó¼Ì½ÚµãµÄÓÒ×ÓÊ÷
-	//±»É¾³ı½ÚµãµÄ×ó×ÓÊ÷³ÉÎªºó¼Ì½ÚµãµÄ×ó×ÓÊ÷
+	//æ‰¾åˆ°åç»§èŠ‚ç‚¹ï¼Œå°†åç»§èŠ‚ç‚¹çš„å³å­æ ‘è¿æ¥åˆ°åç»§èŠ‚ç‚¹çš„çˆ¶èŠ‚ç‚¹çš„å·¦å­æ ‘
+	//è¢«åˆ é™¤èŠ‚ç‚¹çš„å³å­æ ‘æˆä¸ºåç»§èŠ‚ç‚¹çš„å³å­æ ‘
+	//è¢«åˆ é™¤èŠ‚ç‚¹çš„å·¦å­æ ‘æˆä¸ºåç»§èŠ‚ç‚¹çš„å·¦å­æ ‘
 	public Node getSuccessor(Node delNode){
-	    Node successorParent = delNode;
-	    Node successor = delNode;
-	    Node current = delNode.rightChild;
-	    while(current != null){
-	        successorParent = successor;
-	        successor = current;
-	        current = current.leftChild;
-	    }
-	    //½«ºó¼Ì½ÚµãÌæ»»É¾³ı½Úµã
-	    if(successor != delNode.rightChild){
-	        successorParent.leftChild = successor.rightChild;
-	        successor.rightChild = delNode.rightChild;
-	    }
-	     
-	    return successor;
+		Node successorParent = delNode;
+		Node successor = delNode;
+		Node current = delNode.rightChild;
+		while(current != null){
+			successorParent = successor;
+			successor = current;
+			current = current.leftChild;
+		}
+		//å°†åç»§èŠ‚ç‚¹æ›¿æ¢åˆ é™¤èŠ‚ç‚¹
+		if(successor != delNode.rightChild){
+			successorParent.leftChild = successor.rightChild;
+			successor.rightChild = delNode.rightChild;
+		}
+
+		return successor;
 	}
 }
