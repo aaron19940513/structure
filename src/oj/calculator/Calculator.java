@@ -2,7 +2,6 @@ package oj.calculator;
 
 import java.util.LinkedList;
 
-import org.hamcrest.core.IsInstanceOf;
 
 public class Calculator {
 	double calc(String params) {
