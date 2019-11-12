@@ -18,67 +18,70 @@ public class Trie {
      * Inserts a word into the trie.
      */
     public void insert(String word) {
-        List<Node> nodes = root.getChildren();
         insert(root, word);
     }
 
     private void insert(Node node, String word) {
-        List<Node> nodes = root.getChildren();
-        if(nodes.isEmpty()){
+        List<Node> nodes = node.getChildren();
+        if (nodes.isEmpty()) {
             nodes.add(new Node(word));
             return;
         }
-        boolean isStart =false;
+        boolean isStart = false;
         for (Node child : nodes) {
-            if (word.startsWith(child.value)&&!word.equals(child.value)) {
-                isStart= true;
-                insert(child,word.substring(child.value.length()));
+            if (word.equals(child.value)) {
+                return;
+            } else if (word.startsWith(child.value)) {
+                isStart = true;
+                insert(child, word.substring(child.value.length()));
+            } else if (child.value.startsWith(word)) {
+
             }
         }
-        if(!isStart){
+        if (!isStart) {
             nodes.add(new Node(word));
         }
-
     }
 
     /**
      * Returns if the word is in the trie.
      */
     public boolean search(String word) {
-       return search(root,word);
+        return search(root, word);
     }
-    public boolean search(Node node,String word) {
-        if(word.isEmpty()){
-            return true;
+
+    public boolean search(Node node, String word) {
+        if (word.isEmpty()) {
+            return false;
         }
-        List<Node> nodes = root.getChildren();
+        List<Node> nodes = node.getChildren();
         for (Node child : nodes) {
-            if(word.startsWith(child.value)){
-                if(word.equals(child.value)) {
+            if (word.startsWith(child.value)) {
+                if (word.equals(child.value)) {
                     return true;
-                }
-                else{
-                    return search(child,word.substring(child.value.length()));
+                } else {
+                    return search(child, word.substring(child.value.length()));
                 }
             }
         }
         return false;
     }
+
     /**
      * Returns if there is any word in the trie that starts with the given prefix.
      */
     public boolean startsWith(String prefix) {
-       return  startsWith(root,prefix);
+        return startsWith(root, prefix);
     }
 
     private boolean startsWith(Node node, String prefix) {
-        if(prefix.isEmpty()){
+        if (prefix.isEmpty()) {
             return true;
         }
-        List<Node> nodes = root.getChildren();
+        List<Node> nodes = node.getChildren();
         for (Node child : nodes) {
-            if(prefix.startsWith(child.value)){
-                return startsWith(node,prefix.substring(child.value.length()));
+            if (prefix.startsWith(child.value)) {
+                return startsWith(node, prefix.substring(child.value.length()));
             }
         }
         return false;
