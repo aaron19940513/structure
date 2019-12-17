@@ -35,7 +35,13 @@ public class Trie {
                 isStart = true;
                 insert(child, word.substring(child.value.length()));
             } else if (child.value.startsWith(word)) {
-
+                isStart = true;
+                Node n = new Node(child.value.substring(word.length()));
+                n.children = child.children;
+                child.value = word;
+                List<Node> tempNodes = new ArrayList<>();
+                tempNodes.add(n);
+                child.children = tempNodes;
             }
         }
         if (!isStart) {
@@ -80,8 +86,10 @@ public class Trie {
         }
         List<Node> nodes = node.getChildren();
         for (Node child : nodes) {
-            if (prefix.startsWith(child.value)) {
-                return startsWith(node, prefix.substring(child.value.length()));
+            if (child.value.startsWith(prefix)) {
+                return true;
+            } else if (prefix.startsWith(child.value)) {
+                return startsWith(child, prefix.substring(child.value.length()));
             }
         }
         return false;
@@ -89,6 +97,7 @@ public class Trie {
 
     private class Node {
         String value;
+
         List<Node> children;
 
         public Node(String value) {

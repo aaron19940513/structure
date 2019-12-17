@@ -1,6 +1,4 @@
 package array;
-import java.util.function.BinaryOperator;
-
 /**
  * 寻找和为定值的多个数
  * 题目描述

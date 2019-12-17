@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 public class Calculator {
 	double calc(String params) {
-
 		LinkedList<Object> paramList = new LinkedList<>();
 		StringBuffer decimal = new StringBuffer();
 		for (char param : params.toCharArray()) {
@@ -30,7 +29,7 @@ public class Calculator {
 
 	private void show(LinkedList<Object> paramList) {
 		for (Object object : paramList) {
-			System.out.println(String.valueOf(object));
+			System.out.print(String.valueOf(object));
 		}
 
 	}
