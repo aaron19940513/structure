@@ -1,4 +1,7 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -97,5 +100,15 @@ public class test1 {
         node2.next = node3;
         node3.next = node4;
         SortList.ListNode ans = sortList.sortList(node);
+    }
+
+    @Test
+    public void test6() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        Date parse = sdf.parse("2020-01-14T00:00:00.000");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        Date parse2 = sdf2.parse("2020-01-14 00:00:00.000");
+        System.out.println(parse.getTime());
+        System.out.println(parse2.getTime());
     }
 }
